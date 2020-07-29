@@ -1,5 +1,5 @@
 <template>
-    <CartProductsList class="p-3"></CartProductsList>
+    <CartProductsList class="p-3" :appInfos="appInfos"></CartProductsList>
 </template>
 
 <script>
@@ -10,6 +10,7 @@
             CartProductsList,
         },
         props: {
+            appInfos: String,
         },
     };
 </script>

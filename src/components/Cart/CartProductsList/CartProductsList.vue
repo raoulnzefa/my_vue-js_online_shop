@@ -1,8 +1,9 @@
 <template>
     <div class="d-flex flex-row flex-wrap">
-        <CartProductItem></CartProductItem>
-        <CartProductItem></CartProductItem>
-        <CartProductItem></CartProductItem>
+        <CartProductItem title="test Cart props" :appInfos="appInfos"></CartProductItem>
+        <CartProductItem :appInfos="appInfos"></CartProductItem>
+        <CartProductItem title="test Cart props"></CartProductItem>
+        <CartProductItem title="test Cart props"></CartProductItem>
         <CartProductItem></CartProductItem>
     </div>
 </template>
@@ -15,6 +16,7 @@
             CartProductItem,
         },
         props: {
+            appInfos: String,
         },
     };
 </script>
