@@ -1,6 +1,6 @@
 <template>
-    <div class="CartProductItem">
-        <pre v-text="$attrs"/>
+    <div class="w-50 border cart-container">
+        Cart
     </div>
 </template>
 
@@ -10,3 +10,9 @@
         },
     };
 </script>
+
+<style>
+    .cart-container {
+        height: 200px;
+    }
+</style>
