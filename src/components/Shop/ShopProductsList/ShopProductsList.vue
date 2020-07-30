@@ -20,7 +20,7 @@
             ShopProductItem,
         },
         props: {
-            products: [],
+            products: Array,
         },
     };
 </script>

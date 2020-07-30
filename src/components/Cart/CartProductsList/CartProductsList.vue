@@ -1,10 +1,8 @@
 <template>
-    <div class="d-flex flex-row flex-wrap">
-        <CartProductItem title="test Cart props" :appInfos="appInfos"></CartProductItem>
-        <CartProductItem :appInfos="appInfos"></CartProductItem>
-        <CartProductItem title="test Cart props"></CartProductItem>
-        <CartProductItem title="test Cart props"></CartProductItem>
-        <CartProductItem></CartProductItem>
+    <div class="d-flex flex-column flex-wrap p-1">
+        <h5 class="border-bottom pb-3">Mon panier</h5>
+        <cart-product-item v-for="item in cart" :key="item.id" :item="item"></cart-product-item>
+        <hr class="w-100">
     </div>
 </template>
 
@@ -16,7 +14,7 @@
             CartProductItem,
         },
         props: {
-            appInfos: String,
+            cart: Array,
         },
     };
 </script>

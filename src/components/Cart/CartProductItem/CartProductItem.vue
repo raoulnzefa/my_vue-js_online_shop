@@ -1,21 +1,17 @@
 <template>
-    <div class="w-50 border cart-container">
-        <h3>{{ title }}</h3>
-        <p>{{ appInfos }}</p>
+    <div class="d-flex flex-row justify-content-between p-2 px-5">
+        <span>{{ item.title }}</span>
+        <span><strong>{{ item.price }} €</strong></span>
     </div>
 </template>
 
 <script>
     export default {
         props: {
-            title: String,
-            appInfos: String,
+            item: Object,
         },
     };
 </script>
 
 <style>
-    .cart-container {
-        height: 200px;
-    }
 </style>

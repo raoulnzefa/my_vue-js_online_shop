@@ -31,6 +31,6 @@
 
 <style>
     .product-container {
-        height: 400px;
+        height: 450px;
     }
 </style>
