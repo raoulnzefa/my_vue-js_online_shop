@@ -1,13 +1,7 @@
 <template>
     <div class="d-flex flex-row flex-wrap">
         <template v-for="product in products">
-            <ShopProductItem
-                    :key="product.id"
-                    :img="product.img"
-                    :title="product.title"
-                    :description="product.description"
-                    :price="product.price"
-            />
+            <ShopProductItem :key="product.id" :product="product"/>
         </template>
     </div>
 </template>
