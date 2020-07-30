@@ -1,5 +1,5 @@
 <template>
-    <ShopProductsList class="p-3" :products="products"></ShopProductsList>
+    <ShopProductsList class="px-3" :products="products"></ShopProductsList>
 </template>
 
 <script>

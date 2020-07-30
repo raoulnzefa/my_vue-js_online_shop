@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-row justify-content-between p-2">
+    <div class="d-flex flex-row justify-content-between">
         <span>{{ item.title }}</span>
         <span><strong>{{ item.price }} €</strong></span>
         <button @click="removeItemFromCart" class="close">
