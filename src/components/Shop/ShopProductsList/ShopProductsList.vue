@@ -1,9 +1,14 @@
 <template>
     <div class="d-flex flex-row flex-wrap">
-        <ShopProductItem></ShopProductItem>
-        <ShopProductItem></ShopProductItem>
-        <ShopProductItem></ShopProductItem>
-        <ShopProductItem></ShopProductItem>
+        <template v-for="product in products">
+            <ShopProductItem
+                    :key="product.id"
+                    :img="product.img"
+                    :title="product.title"
+                    :description="product.description"
+                    :price="product.price"
+            />
+        </template>
     </div>
 </template>
 
@@ -15,6 +20,7 @@
             ShopProductItem,
         },
         props: {
+            products: [],
         },
     };
 </script>
