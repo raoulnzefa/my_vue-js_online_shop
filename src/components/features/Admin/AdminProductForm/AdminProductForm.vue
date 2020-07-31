@@ -1,14 +1,11 @@
 <template>
     <div class="AdminProductForm">
-        <pre v-text="$attrs"/>
+        <div>Form</div>
     </div>
 </template>
 
 <script>
     export default {
-        data() {
-
-        },
         props: {
         },
     };
