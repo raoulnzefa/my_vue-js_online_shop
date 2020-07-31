@@ -10,8 +10,8 @@
 
 <script>
   import TheHeader from "./components/TheHeader/TheHeader";
-  import Shop from "./components/Shop/Shop/Shop";
-  import Cart from "./components/Cart/Cart/Cart";
+  import Shop from "./components/features/User/Shop/Shop/Shop";
+  import Cart from "./components/features/User/Cart/Cart/Cart";
 
 export default {
   name: 'App',
