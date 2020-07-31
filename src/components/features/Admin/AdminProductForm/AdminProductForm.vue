@@ -6,7 +6,12 @@
 
 <script>
     export default {
+        data() {
+
+        },
         props: {
         },
     };
 </script>
+
+<style></style>
