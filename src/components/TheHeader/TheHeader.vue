@@ -29,6 +29,24 @@
                 page: eventBus.page,
             }
         },
+        directives: {
+            triggerCollapse: {
+                inserted(el, binding) {
+                    window.addEventListener('click', () => {
+                        nav.classList.remove('show');
+                    })
+                    const nav = document.querySelector(`#${ binding.value }`);
+                    el.addEventListener('click', (e) => {
+                        if (nav.classList.contains('show')) {
+                            nav.classList.remove('show');
+                        } else {
+                            nav.classList.add('show');
+                        }
+                        e.stopPropagation();
+                    });
+                },
+            }
+        },
         methods: {
             changePage(page) {
                 eventBus.changePage(page);
