@@ -2,12 +2,12 @@
     <nav class="navbar navbar-light bg-light navbar-expand-lg">
         <a class="navbar-brand" href="#">
             <img src="../../assets/logo.png" width="30" height="30" />
-            Shop
+            My-Shop
         </a>
-        <button class="navbar-toggler">
+        <button class="navbar-toggler" v-trigger-collapse="'collapse'">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
+        <div id="collapse" class="collapse navbar-collapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" :class="{ active: page === 'User'}" @click="changePage('User')">Boutique</a>
@@ -27,6 +27,24 @@
         data(){
             return{
                 page: eventBus.page,
+            }
+        },
+        directives: {
+            triggerCollapse: {
+                inserted(el, binding) {
+                    window.addEventListener('click', () => {
+                        nav.classList.remove('show');
+                    })
+                    const nav = document.querySelector(`#${ binding.value }`);
+                    el.addEventListener('click', (e) => {
+                        if (nav.classList.contains('show')) {
+                            nav.classList.remove('show');
+                        } else {
+                            nav.classList.add('show');
+                        }
+                        e.stopPropagation();
+                    });
+                },
             }
         },
         methods: {
