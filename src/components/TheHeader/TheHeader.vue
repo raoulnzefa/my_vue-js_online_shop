@@ -2,7 +2,7 @@
     <nav class="navbar navbar-light bg-light navbar-expand-lg">
         <a class="navbar-brand" href="#">
             <img src="../../assets/logo.png" width="30" height="30" />
-            Shop
+            My-Shop
         </a>
         <button class="navbar-toggler">
             <span class="navbar-toggler-icon"></span>
