@@ -65,8 +65,13 @@ export const eventBus = new Vue({
       this.page = page;
       this.$emit('update:page', this.page);
     },
+<<<<<<< HEAD
     addProduct(data) {
       this.products = [...this.products, {...data, id: this.products.length + 1 + ''}];
+=======
+    addProduct(product) {
+      this.products = [ ...this.products, { ...product, id: this.products.length + 1 + '' }];
+>>>>>>> phase_three
       this.$emit('update:products', this.products);
     },
   },
