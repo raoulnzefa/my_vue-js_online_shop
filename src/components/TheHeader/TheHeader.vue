@@ -4,10 +4,10 @@
             <img src="../../assets/logo.png" width="30" height="30" />
             My-Shop
         </a>
-        <button class="navbar-toggler">
+        <button class="navbar-toggler" v-trigger-collapse="'collapse'">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse">
+        <div id="collapse" class="collapse navbar-collapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" :class="{ active: page === 'User'}" @click="changePage('User')">Boutique</a>
