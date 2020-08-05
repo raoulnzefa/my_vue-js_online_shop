@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import * as Filters from './utils/filters';
+import axios from "axios";
+
+Vue.prototype.$http = axios;
+
 export const eventBus = new Vue({
   data: {
     page: "User",
