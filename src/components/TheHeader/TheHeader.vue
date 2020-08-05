@@ -1,7 +1,7 @@
 <template>
     <transition appear>
         <nav class="navbar navbar-light bg-light navbar-expand-lg">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand">
                 <img src="../../assets/logo.png" width="30" height="30" />
                 My-Shop
             </a>
@@ -11,10 +11,10 @@
             <div id="collapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" :class="{ active: page === 'User'}" @click="changePage('User')">Boutique</a>
+                        <RouterLink class="nav-link" to="/user">Boutique</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" :class="{ active: page === 'Admin'}" @click="changePage('Admin')">Admin</a>
+                        <RouterLink class="nav-link" to="admin">Admin</RouterLink>
                     </li>
                 </ul>
             </div>
@@ -23,14 +23,7 @@
 </template>
 
 <script>
-    import { eventBus } from "../../main";
-
     export default {
-        data(){
-            return{
-                page: eventBus.page,
-            }
-        },
         directives: {
             triggerCollapse: {
                 inserted(el, binding) {
@@ -49,22 +42,15 @@
                 },
             }
         },
-        methods: {
-            changePage(page) {
-                eventBus.changePage(page);
-            },
-        },
-        created() {
-            eventBus.$on('update:page', (page) => {
-                this.page = page;
-            })
-        },
         props: {
         },
     };
 </script>
 
 <style scoped>
+    .router-link-active {
+        font-weight: bold;
+    }
     a {
         cursor: pointer;
     }

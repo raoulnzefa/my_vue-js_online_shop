@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import * as Filters from './utils/filters';
 import axios from "axios";
+import router from "./router";
 
 Vue.prototype.$http = axios;
 
@@ -84,5 +85,6 @@ Object.keys(Filters).forEach( (f) => {
 Vue.config.productionTip = false;
 
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app');
