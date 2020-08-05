@@ -6,6 +6,7 @@ import router from "./router";
 import {DATABASE_URL} from "./config/config";
 
 Vue.prototype.$http = axios;
+axios.defaults.baseURL = DATABASE_URL;
 
 export const eventBus = new Vue({
   data: {
@@ -15,6 +16,17 @@ export const eventBus = new Vue({
     ],
   },
   methods: {
+    addProducts(products) {
+      this.products = products;
+      this.$emit('update:products', this.products);
+    },
+    initProducts() {
+      this.$http.get(`products.json`)
+          .then(response => {
+            const data = response.data;
+            this.addProducts(Object.keys(data).map( key => data[key]));
+          });
+    },
     addProductToCart(product) {
       if (!this.cart.map( i => i.id).includes(product.id)) {
         this.cart = [ ...this.cart, product ];
@@ -25,64 +37,16 @@ export const eventBus = new Vue({
       this.cart = this.cart.slice().filter( i => i.id !== item.id );
       this.$emit('update:cart', this.cart.slice());
     },
-    changePage(page) {
-      this.page = page;
-      this.$emit('update:page', this.page);
-    },
     addProduct(data) {
-      this.products = [...this.products, {...data, id: this.products.length + 1 + ''}];
-      this.$emit('update:products', this.products);
+      this.$http.post('products.json', data)
+          .then( () => {
+            this.products = [ ...this.products, { ...data, id: this.products.length + 1 + '' }];
+            this.$emit('update:products', this.products);
+      })
     },
   },
   created() {
-
-    [
-        {
-          id: '1',
-          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7ekQ3gBH4qgpA_rFjIi5BRHelutd--Q0xhf76XENxHC_gpsIZA',
-          title: 'MacBook',
-          description: "Quand nous avons créé le MacBook, nous avons tout simplement tenté l'impossible. C'est le plus fin et le plus léger de nos ordinateurs portables",
-          price: 1500
-        },
-        {
-          id: '2',
-              img: 'https://static.fnac-static.com/multimedia/Images/FR/MDM/e2/0e/1a/1707746/1540-0/tsp20180327114010/PC-Portable-Gaming-Acer-Predator-21-X-GX21-71-76VC-21-Incurve.jpg',
-            title: 'Predator',
-            description: 'The GPU. The source of any competent, powerful gaming machine. With next-gen solutions from NVIDIA® and AMD, this source is overflowing.',
-            price: 2300
-        },
-        {
-          id: '3',
-              img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7ekQ3gBH4qgpA_rFjIi5BRHelutd--Q0xhf76XENxHC_gpsIZA',
-            title: 'MacBook',
-            description: "Quand nous avons créé le MacBook, nous avons tout simplement tenté l'impossible. C'est le plus fin et le plus léger de nos ordinateurs portables",
-            price: 1500
-        },
-        {
-          id: '4',
-              img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7ekQ3gBH4qgpA_rFjIi5BRHelutd--Q0xhf76XENxHC_gpsIZA',
-            title: 'MacBook',
-            description: "Quand nous avons créé le MacBook, nous avons tout simplement tenté l'impossible. C'est le plus fin et le plus léger de nos ordinateurs portables",
-            price: 1500
-        },
-        {
-          id: '5',
-              img: 'https://static.fnac-static.com/multimedia/Images/FR/MDM/e2/0e/1a/1707746/1540-0/tsp20180327114010/PC-Portable-Gaming-Acer-Predator-21-X-GX21-71-76VC-21-Incurve.jpg',
-            title: 'Predator',
-            description: 'The GPU. The source of any competent, powerful gaming machine. With next-gen solutions from NVIDIA® and AMD, this source is overflowing.',
-            price: 2300
-        },
-        {
-          id: '6',
-              img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7ekQ3gBH4qgpA_rFjIi5BRHelutd--Q0xhf76XENxHC_gpsIZA',
-            title: 'MacBook',
-            description: "Quand nous avons créé le MacBook, nous avons tout simplement tenté l'impossible. C'est le plus fin et le plus léger de nos ordinateurs portables",
-            price: 1500
-        }
-    ].forEach(p => {
-      this.$http.post(`${DATABASE_URL}products.json`, p);
-    })
-
+    this.initProducts();
   },
 });
 
