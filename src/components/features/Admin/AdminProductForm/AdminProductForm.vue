@@ -47,8 +47,7 @@
                     this.resetForm();
                     this.$router.replace('/shop');
                     }
-                }
-            },
+                },
             formIsValid() {
                 this.errors = [];
                 if (!this.form.img) {
