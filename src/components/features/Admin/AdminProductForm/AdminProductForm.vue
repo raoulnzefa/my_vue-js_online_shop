@@ -46,6 +46,7 @@
                     eventBus.addProduct({...this.form});
                     this.resetForm();
                     this.$router.replace('/shop');
+                    }
                 }
             },
             formIsValid() {
