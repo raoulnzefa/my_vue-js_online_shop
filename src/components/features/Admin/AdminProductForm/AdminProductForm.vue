@@ -43,17 +43,10 @@
         methods: {
             trySubmit() {
                 if (this.formIsValid()) {
-<<<<<<< HEAD
                     eventBus.addProduct({...this.form});
                     this.resetForm();
-                    eventBus.changePage('User');
-=======
-                    if (this.formIsValid()) {
-                        eventBus.addProduct({ ...this.form });
-                        this.resetForm();
-                        eventBus.changePage('User');
+                    this.$router.replace('/shop');
                     }
->>>>>>> phase_three
                 }
             },
             formIsValid() {
