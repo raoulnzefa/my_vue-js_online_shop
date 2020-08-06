@@ -17,17 +17,6 @@ export const eventBus = new Vue({
     ],
   },
   methods: {
-    addProducts(products) {
-      this.products = products;
-      this.$emit('update:products', this.products);
-    },
-    initProducts() {
-      this.$http.get(`products.json`)
-          .then(response => {
-            const data = response.data;
-            this.addProducts(Object.keys(data).map( key => data[key]));
-          });
-    },
     addProductToCart(product) {
       if (!this.cart.map( i => i.id).includes(product.id)) {
         this.cart = [ ...this.cart, product ];
