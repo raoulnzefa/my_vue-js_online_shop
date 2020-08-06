@@ -11,11 +11,11 @@
         },
         data() {
             return{
-                // products: [],
+
             }
         },
         props: {
-            products: [],
+            products: Array,
         },
     };
 </script>

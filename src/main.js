@@ -13,20 +13,9 @@ export const eventBus = new Vue({
   data: {
     page: "User",
     products: [],
-    cart: [
-    ],
+    cart: [],
   },
   methods: {
-    addProductToCart(product) {
-      if (!this.cart.map( i => i.id).includes(product.id)) {
-        this.cart = [ ...this.cart, product ];
-        this.$emit('update:cart', this.cart.slice());
-      }
-    },
-    removeItemFromCart(item) {
-      this.cart = this.cart.slice().filter( i => i.id !== item.id );
-      this.$emit('update:cart', this.cart.slice());
-    },
     addProduct(data) {
       this.$http.post('products.json', data)
           .then( () => {
@@ -34,9 +23,6 @@ export const eventBus = new Vue({
             this.$emit('update:products', this.products);
       })
     },
-  },
-  created() {
-    this.initProducts();
   },
 });
 

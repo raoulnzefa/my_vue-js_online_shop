@@ -4,7 +4,7 @@
             <shop :products="products" class="w-75"></shop>
         </transition>
         <transition name="right" appear>
-            <cart class="w-25"></cart>
+            <cart :cart="cart" class="w-25"></cart>
         </transition>
     </div>
 </template>
@@ -25,7 +25,10 @@
         computed: {
             ...mapState('product', {
                 products: "datas"
-            })
+            }),
+            ...mapState('cart', {
+                cart: 'datas'
+            }),
         },
         props: {
         },

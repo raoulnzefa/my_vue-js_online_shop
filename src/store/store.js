@@ -19,7 +19,6 @@ const product = {
             axios.get('products.json')
                 .then(response => {
                     const data = response.data;
-                    console.log('data', data);
                     context.commit('addMany', Object.keys(data).map( key => data[key]))
                 })
         },
@@ -30,6 +29,15 @@ const cart = {
     namespaced: true,
     state: {
         datas: []
+    },
+    mutations: {
+        addOne(state, product) {
+            state.datas.push(product);
+        },
+        deleteOne(state, id) {
+            const index = state.datas.findIndex( d => d.id === id);
+            state.datas.splice(index, 1);
+        }
     }
 }
 
