@@ -24,6 +24,10 @@ const product = {
                     const data = response.data;
                     context.commit('addMany', Object.keys(data).map( key => data[key]))
                 })
+                .catch(error => {
+                    console.log(`Erreur :                    
+                    ${error}`)
+                })
         },
         saveOne(context, product) {
             axios.post('products.json', product).then( () => {
