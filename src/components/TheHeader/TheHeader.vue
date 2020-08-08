@@ -14,7 +14,7 @@
                         <RouterLink class="nav-link" to="/user">Boutique</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <RouterLink class="nav-link" to="admin">Admin</RouterLink>
+                        <RouterLink class="nav-link" to="/admin">Ajout</RouterLink>
                     </li>
                 </ul>
             </div>
