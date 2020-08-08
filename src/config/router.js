@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
-import User from "./components/features/User/User/User";
-import Admin from "./components/features/Admin/Admin/Admin";
+import User from "../components/features/User/User/User";
+import Admin from "../components/features/Admin/Admin/Admin";
 
 Vue.use(VueRouter);
 

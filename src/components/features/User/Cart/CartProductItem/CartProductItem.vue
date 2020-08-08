@@ -2,23 +2,21 @@
     <div class="d-flex flex-row justify-content-between">
         <span>{{ item.title }}</span>
         <span><strong>{{ item.price | price }}</strong></span>
-        <button @click="removeItemFromCart" class="close">
+        <button @click="deleteOne(item.id)" class="close">
             <span>&times;</span>
         </button>
     </div>
 </template>
 
 <script>
-    import { eventBus } from "../../../../../main";
+    import { mapMutations } from 'vuex';
 
     export default {
         props: {
             item: Object,
         },
         methods: {
-            removeItemFromCart() {
-                eventBus.removeItemFromCart({...this.item});
-            },
+            ...mapMutations('cart', ['deleteOne'])
         },
     };
 </script>

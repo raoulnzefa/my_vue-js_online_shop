@@ -12,22 +12,20 @@
         </div>
         <div>
             <span>{{ product.price | price }}</span>
-            <button @click="addProductToCart" class="btn btn-primary btn-sm float-right">Commander</button>
+            <button @click="addOne(product)" class="btn btn-primary btn-sm float-right">Commander</button>
         </div>
     </div>
 </template>
 
 <script>
-    import { eventBus } from "../../../../../main";
+    import { mapMutations } from 'vuex'
 
     export default {
         props: {
             product: Object,
         },
         methods: {
-            addProductToCart() {
-                eventBus.addProductToCart({...this.product});
-            },
+            ...mapMutations('cart', ['addOne'])
         },
     };
 </script>
