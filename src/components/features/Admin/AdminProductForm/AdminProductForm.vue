@@ -21,7 +21,8 @@
         <ul v-if="errors.length">
             <li class="text-danger" v-for="error in errors" :key="error">{{ error }}</li>
         </ul>
-        <button class="btn btn-primary">Ajouter</button>
+        <button class="btn btn-primary">Ajouter
+        </button>
     </form>
 </template>
 
